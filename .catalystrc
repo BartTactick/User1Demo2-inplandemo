@@ -1,0 +1,30 @@
+{
+  "defaults": {
+    "project": 1,
+    "env": 1
+  },
+  "actives": {
+    "project": 1,
+    "env": 1
+  },
+  "projects": [
+    {
+      "idx": 1,
+      "id": "792000002478207",
+      "name": "User1Demo2-inplandemo",
+      "domain": {
+        "id": "30043529396",
+        "name": "user1demo2-inplandemo-20076547469.development"
+      },
+      "timezone": "Europe/London",
+      "env": [
+        {
+          "idx": 1,
+          "id": "20076547469",
+          "name": "Development",
+          "type": 3
+        }
+      ]
+    }
+  ]
+}
