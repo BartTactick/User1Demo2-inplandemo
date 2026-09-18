@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: #003878;
+  --color-brand-secondary: #008cd2;
+
+  --color-neutral-25: #f6f8f9;
+  --color-neutral-50: #edf0f2;
+  --color-neutral-100: #dbe1e5;
+  --color-neutral-400: #6a8295;
+  --color-neutral-500: #516371;
+
+  --color-foreground-primary: #111518;
+  --color-foreground-secondary: #516371;
+  --color-foreground-disabled: #516371;
+  --color-foreground-link: #003878;
+  --color-foreground-link-strong: #0066db;
+  --color-foreground-brand: #003878;
+  --color-foreground-action-inverse: #ffffff;
+  --color-foreground-on-brand: #ffffff;
+  --color-foreground-on-accent: #ffffff;
+  --color-foreground-danger: #bd3814;
+  --color-foreground-success: #00852c;
+  --color-foreground-promo: #ff5500;
+
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #edf0f2;
+  --color-background-tertiary: #dbe1e5;
+  --color-background-disabled: #dbe1e5;
+  --color-background-brand: #003878;
+  --color-background-accent: #0058bd;
+  --color-background-accent-subtle: #f6f8f9;
+  --color-background-info-subtle: #ebf4ff;
+  --color-background-success-subtle: #e9fbe9;
+  --color-background-warning-subtle: #fff2de;
+  --color-background-danger-subtle: #fdf0ed;
+  --color-background-conversion: #00852c;
+  --color-background-inverse: #404e59;
+  --color-background-strong: #111518;
+  --color-background-rating: #fdc166;
+  --color-background-promo: #ff5500;
+
+  --color-border-strong: #111518;
+  --color-border-medium: #778d9c;
+  --color-border-subtle: #dbe1e5;
+  --color-border-disabled: #b5c1ca;
+  --color-border-brand: #003878;
+  --color-border-focus: #0066db;
+  --color-border-select: #0058bd;
+}
+
+:root,
+:host {
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-primary: "Overpass", var(--font-sans);
+  --font-tertiary: "Interstate Condensed", var(--font-sans);
+
+  --color-brand-primary: #003878;
+  --color-brand-secondary: #008cd2;
+  --color-neutral-25: #f6f8f9;
+  --color-neutral-50: #edf0f2;
+  --color-neutral-100: #dbe1e5;
+  --color-neutral-400: #6a8295;
+  --color-neutral-500: #516371;
+  --color-gray-200: oklch(92.8% 0.006 264.531);
+  --color-gray-500: oklch(55.1% 0.027 264.364);
+  --color-gray-900: oklch(21% 0.034 264.665);
+  --color-black: #000;
+  --color-white: #fff;
+
+  --color-foreground-primary: #111518;
+  --color-foreground-secondary: #516371;
+  --color-foreground-disabled: #516371;
+  --color-foreground-link: #003878;
+  --color-foreground-link-strong: #0066db;
+  --color-foreground-brand: #003878;
+  --color-foreground-action-inverse: #fff;
+  --color-foreground-on-brand: #fff;
+  --color-foreground-on-accent: #fff;
+  --color-foreground-danger: #bd3814;
+  --color-foreground-success: green;
+  --color-foreground-promo: #f50;
+
+  --color-background-primary: #fff;
+  --color-background-secondary: #edf0f2;
+  --color-background-tertiary: #dbe1e5;
+  --color-background-disabled: #dbe1e5;
+  --color-background-brand: #003878;
+  --color-background-accent: #0058bd;
+  --color-background-accent-subtle: #f6f8f9;
+  --color-background-info-subtle: #ebf4ff;
+  --color-background-success-subtle: #e9fbe9;
+  --color-background-warning-subtle: #fff2de;
+  --color-background-danger-subtle: #fdf0ed;
+  --color-background-conversion: #00852c;
+  --color-background-inverse: #404e59;
+  --color-background-strong: #111518;
+  --color-background-rating: #fdc166;
+  --color-background-promo: #f50;
+
+  --color-border-strong: #111518;
+  --color-border-medium: #778d9c;
+  --color-border-subtle: #dbe1e5;
+  --color-border-disabled: #b5c1ca;
+  --color-border-brand: #003878;
+  --color-border-focus: #0066db;
+  --color-border-select: #0058bd;
+
+  --spacing: 0.25rem;
+  --spacing-18: 72px;
+  --radius-xs: 0.125rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-3xl: 1.5rem;
+  --shadow-lg: 0 4px 20px 0 #00000029;
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --default-transition-duration: 0.15s;
+}
+
+:root {
+  --p-primary-color: var(--color-brand-primary);
+  --p-primary-contrast-color: var(--color-white);
+  --p-primary-hover-color: #002b5c;
+  --p-primary-active-color: #001d3d;
+  --p-surface-0: var(--color-white);
+  --p-surface-50: var(--color-neutral-25);
+  --p-surface-100: var(--color-neutral-50);
+  --p-surface-200: var(--color-neutral-100);
+  --p-surface-400: var(--color-neutral-400);
+  --p-surface-500: var(--color-neutral-500);
+  --p-text-color: var(--color-foreground-primary);
+  --p-text-muted-color: var(--color-foreground-secondary);
+  --p-content-border-radius: var(--radius-md);
+  --p-focus-ring-width: 2px;
+  --p-focus-ring-style: solid;
+  --p-focus-ring-color: var(--color-border-focus);
+  --p-transition-duration: var(--default-transition-duration);
+}
+
+html {
+  font-family: var(--font-primary);
+  color: var(--color-foreground-primary);
+  background: var(--color-background-secondary);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-background-primary);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: var(--p-focus-ring-width) var(--p-focus-ring-style) var(--p-focus-ring-color);
+  outline-offset: 2px;
+}
+
+html,body,#app {
+    height: 100%;
+    width: 100%;
+}

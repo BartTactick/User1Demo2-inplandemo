@@ -1,0 +1,44 @@
+[debug] [2026-06-18T08:42:24.084Z] : 
+[debug] [2026-06-18T08:42:24.086Z] : ----------------------------------------------------------------------
+[debug] [2026-06-18T08:42:24.086Z] : Command:      /home/bart/.nvm/versions/node/v22.22.2/bin/node /home/bart/.nvm/versions/node/v22.22.2/bin/catalyst deploy --only functions
+[debug] [2026-06-18T08:42:24.086Z] : CLI Version:  1.26.1
+[debug] [2026-06-18T08:42:24.086Z] : Platform:     linux
+[debug] [2026-06-18T08:42:24.087Z] : Node Version: v22.22.2
+[debug] [2026-06-18T08:42:24.087Z] : Time:         Thu Jun 18 2026 10:42:24 GMT+0200 (Central European Summer Time)
+[debug] [2026-06-18T08:42:24.087Z] : ----------------------------------------------------------------------
+[debug] [2026-06-18T08:42:24.087Z] : 
+[debug] [2026-06-18T08:42:24.476Z] : > authorizing via signed-in user option
+[debug] [2026-06-18T08:42:24.477Z] : > command requires scopes: ["ZohoCatalyst.projects.ALL","ZohoCatalyst.functions.ALL","ZohoCatalyst.webapp.ALL","ZohoCatalyst.appsail.Update"]
+[debug] [2026-06-18T08:42:24.488Z] : > refreshing access token <
+[debug] [2026-06-18T08:42:24.489Z] : >>>> HTTP REQUEST : POST https://accounts.zoho.eu/oauth/v2/token 
+<request body omitted>
+
+[debug] [2026-06-18T08:42:24.583Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Thu, 18 Jun 2026 08:42:24 GMT","content-type":"application/json;charset=UTF-8","content-length":"2523","connection":"keep-alive","cache-control":"no-store","x-content-type-options":"nosniff","pragma":"no-cache","x-frame-options":"SAMEORIGIN","vary":"accept-encoding","content-language":"en-US","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-06-18T08:42:24.594Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.eu/baas/v1/project/2729000000005001 
+
+[debug] [2026-06-18T08:42:24.696Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Thu, 18 Jun 2026 08:42:24 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-06-18T08:42:24.700Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.eu/baas/v1/project/2729000000005001/environment 
+
+[debug] [2026-06-18T08:42:24.725Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Thu, 18 Jun 2026 08:42:24 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-06-18T08:42:24.738Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.eu/baas/get-details 
+Query params: {"feature_name":"runtime"}
+
+[debug] [2026-06-18T08:42:24.754Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Thu, 18 Jun 2026 08:42:24 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-06-18T08:42:24.758Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.eu/baas/v1/project/2729000000005001/function 
+Query params: {"type":"basicio,event,cron,applogic,integration,browser_logic,job"}
+
+[debug] [2026-06-18T08:42:24.790Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Thu, 18 Jun 2026 08:42:24 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","x-content-type-options":"nosniff","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2026-06-18T08:42:24.794Z] : unknown eol undefined hence skipping check
+[debug] [2026-06-18T08:42:24.795Z] : unknown eol undefined hence skipping check
+[debug] [2026-06-18T08:42:24.795Z] : unknown eol undefined hence skipping check
+[debug] [2026-06-18T08:42:24.795Z] : unknown eol undefined hence skipping check

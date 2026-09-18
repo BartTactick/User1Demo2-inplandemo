@@ -4,5 +4,12 @@
       "name": "inmeetmoment",
       "source": "/home/bart/Desktop/Catalyst/Demo2-inplandemo/inmeetmoment"
     }
-  ]
+  ],
+  "functions": {
+    "targets": [
+      "api"
+    ],
+    "ignore": [],
+    "source": "functions"
+  }
 }

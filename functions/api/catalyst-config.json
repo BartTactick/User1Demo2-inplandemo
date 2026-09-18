@@ -1,0 +1,16 @@
+{
+  "deployment": {
+    "name": "api",
+    "stack": "node24",
+    "type": "advancedio",
+    "env_variables": {
+      "CRM_CLIENT_ID": "1000.H1VFI76R2QLF8QIX4VFFGS90OA6VUB",
+      "CRM_CLIENT_SECRET": "a5f364608c714b5cfe64ef7b6e5fe0cd20aea82a16",
+      "CRM_REFRESH_TOKEN": "1000.4ce396c2d22c7439536c420a2f260d20.ea73e63fdbcf932d257a04b697f24200",
+      "CRM_API": "https://www.zohoapis.eu"
+    }
+  },
+  "execution": {
+    "main": "index.js"
+  }
+}

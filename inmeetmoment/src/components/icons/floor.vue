@@ -1,0 +1,16 @@
+<template>
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 15 15">
+    <!-- Icon from Teenyicons by smhmd - https://github.com/teenyicons/teenyicons/blob/master/LICENSE -->
+    <path
+      fill="none"
+      stroke="currentColor"
+      d="M10 .5h4.5v14H.5V.5h4l3 2m-1 12v-7M4 7.5h5m3 0h2.5"
+    />
+  </svg>
+</template>
+
+<script lang="ts">
+export default {
+  name: 'TeenyiconsFloorplanOutline'
+}
+</script>
