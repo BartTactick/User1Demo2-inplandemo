@@ -4,21 +4,9 @@ import { tmpdir } from "os";
 import { CatalystApp } from "zcatalyst-sdk-node/lib/catalyst-app";
 
 export async function getCRMToken(app: CatalystApp) {
-  const { CRM_CLIENT_ID, CRM_CLIENT_SECRET, CRM_REFRESH_TOKEN } = process.env;
-
-  const connector = app
-    .connection({
-      CRM: {
-        client_id: CRM_CLIENT_ID as string,
-        client_secret: CRM_CLIENT_SECRET as string,
-        auth_url: "https://accounts.zoho.eu/oauth/v2/token",
-        refresh_url: "https://accounts.zoho.eu/oauth/v2/token",
-        refresh_token: CRM_REFRESH_TOKEN as string,
-      },
-    })
-    .getConnector("CRM");
-
-  return await connector.getAccessToken();
+  const connector = await app.connections().getConnectionCredentials("crm");
+  console.log(connector);
+  return connector.headers["Authorization"];
 }
 
 export async function COQLQuery(app: CatalystApp, select_query: string) {
@@ -31,7 +19,7 @@ export async function COQLQuery(app: CatalystApp, select_query: string) {
       { select_query },
       {
         headers: {
-          Authorization: "Zoho-oauthtoken " + token,
+          Authorization: token,
         },
       },
     )
@@ -83,7 +71,7 @@ export async function createItems(
       },
       {
         headers: {
-          Authorization: "Zoho-oauthtoken " + token,
+          Authorization: token,
         },
       },
     )
@@ -128,7 +116,7 @@ export async function CRMUpsert(
       },
       {
         headers: {
-          Authorization: "Zoho-oauthtoken " + token,
+          Authorization: token,
         },
       },
     )
@@ -166,7 +154,7 @@ export async function getItemByID(
   const queryResult = await axios
     .get(CRM_API + "/crm/v5/" + module + "/" + id, {
       headers: {
-        Authorization: "Zoho-oauthtoken " + token,
+        Authorization: token,
       },
     })
     .catch((error) => {
@@ -202,7 +190,7 @@ export async function updateItemByID(
       { data: [data], trigger: ["approval", "workflow", "blueprint"] },
       {
         headers: {
-          Authorization: "Zoho-oauthtoken " + token,
+          Authorization: token,
         },
       },
     )
@@ -242,7 +230,7 @@ export async function updateItems(
       { data, trigger: ["approval", "workflow", "blueprint"] },
       {
         headers: {
-          Authorization: "Zoho-oauthtoken " + token,
+          Authorization: token,
         },
       },
     )
@@ -278,7 +266,7 @@ export async function deleteItems(
   const queryResult = await axios
     .delete(CRM_API + "/crm/v5/" + module + "?wf_trigger=true&ids=" + ids, {
       headers: {
-        Authorization: "Zoho-oauthtoken " + token,
+        Authorization: token,
       },
     })
     .catch((error) => {
@@ -313,7 +301,7 @@ export async function getAttachments(
   const queryResult = await axios
     .get(CRM_API + "/crm/v5/" + module + "/" + id + "/Attachments", {
       headers: {
-        Authorization: "Zoho-oauthtoken " + token,
+        Authorization: token,
       },
       params: {
         fields: "$file_id,File_Name",
@@ -347,7 +335,7 @@ export async function downloadCRMFile(
   const responseResponse = await axios
     .get(CRM_API + "/crm/v6/files?id=" + fileID, {
       headers: {
-        Authorization: "Zoho-oauthtoken " + token,
+        Authorization: token,
       },
       responseType: "stream",
     })

@@ -28,6 +28,18 @@ const fs_1 = require("fs");
 const os_1 = require("os");
 function getCRMToken(app) {
     return __awaiter(this, void 0, void 0, function* () {
+        const { CRM_CLIENT_ID, CRM_CLIENT_SECRET, CRM_REFRESH_TOKEN } = process.env;
+        // const connector = app
+        //   .connection({
+        //     CRM: {
+        //       client_id: CRM_CLIENT_ID as string,
+        //       client_secret: CRM_CLIENT_SECRET as string,
+        //       auth_url: "https://accounts.zoho.eu/oauth/v2/token",
+        //       refresh_url: "https://accounts.zoho.eu/oauth/v2/token",
+        //       refresh_token: CRM_REFRESH_TOKEN as string,
+        //     },
+        //   })
+        //   .getConnector("CRM");
         const connector = yield app.connections().getConnectionCredentials("crm");
         console.log(connector);
         return connector.headers["Authorization"];
