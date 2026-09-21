@@ -8,8 +8,7 @@ import {
   updateItems,
 } from "../utils/crmConnector";
 import { helpers } from "../utils/helpers";
-import { CatalystApp } from "zcatalyst-sdk-node/lib/catalyst-app";
-import { format, toZonedTime } from "date-fns-tz";
+import durationCalculation from "../utils/durationCalculation";
 
 const router = express.Router();
 
@@ -21,7 +20,8 @@ router.get("/:id/create", async (req, res) => {
     `
     select 
       Contact_Name.id,
-      Account_Name.id
+      Account_Name.id,
+      Aantal_ramen
     from Deals where id = ${req.params.id}`,
   );
 
@@ -31,11 +31,12 @@ router.get("/:id/create", async (req, res) => {
   const { date, time, type } = req.query as any;
   console.log(req.query);
 
+  const duration = await durationCalculation(app, Number(row["Aantal_ramen"]));
   const [hours, minutes] = time.split(":").map(Number);
   const startDateTime = new Date(date);
   startDateTime.setHours(hours, minutes);
   const endDateTime = new Date(startDateTime);
-  endDateTime.setHours(endDateTime.getHours() + 1); // Assuming the event lasts 1 hour
+  endDateTime.setMinutes(endDateTime.getMinutes() + duration); // Assuming the event lasts for the calculated duration
 
   const create = await createItems(app, "Events", [
     {
@@ -70,6 +71,7 @@ router.get("/:id", async (req, res) => {
       Contact_Name.Mailing_City,Contact_Name.Mailing_Zip,
       Contact_Name.Mailing_Street,
       Account_Name.Account_Name,
+      Aantal_ramen,
       Soort_aanvrag
     from Deals where id = ${req.params.id}`,
   );
@@ -77,6 +79,7 @@ router.get("/:id", async (req, res) => {
   const [row] = getPAT;
 
   if (!row) return res.status(404).json({ error: "Details not found" });
+  const duration = await durationCalculation(app, Number(row["Aantal_ramen"]));
   // const getAvailability = await COQLQueryAll(
   //   app,
   //   "select Event_Title from Events where id > 0",
@@ -96,6 +99,7 @@ router.get("/:id", async (req, res) => {
     },
     franchise: row["Account_Name.Account_Name"],
     type: row.Soort_aanvrag,
+    duration,
   });
 });
 

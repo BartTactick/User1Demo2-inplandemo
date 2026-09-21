@@ -16,6 +16,7 @@ exports.availabilityRouter = void 0;
 const express_1 = __importDefault(require("express"));
 const zcatalyst_sdk_node_1 = __importDefault(require("zcatalyst-sdk-node"));
 const crmConnector_1 = require("../utils/crmConnector");
+const durationCalculation_1 = __importDefault(require("../utils/durationCalculation"));
 const router = express_1.default.Router();
 router.get("/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const app = zcatalyst_sdk_node_1.default.initialize(req);
@@ -23,7 +24,8 @@ router.get("/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     const getPAT = yield (0, crmConnector_1.COQLQuery)(app, `
     select 
       Contact_Name.id,
-      Account_Name.id
+      Account_Name.id,
+      Aantal_ramen
     from Deals where id = ${req.params.id}`);
     const [row] = getPAT;
     if (!row)
@@ -31,6 +33,7 @@ router.get("/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     const startDateTime = new Date();
     startDateTime.setHours(12, 0, 0, 1);
     startDateTime.setDate(startDateTime.getDate() + 1);
+    const duration = yield (0, durationCalculation_1.default)(app, Number(row["Aantal_ramen"]));
     const franciseEvents = yield (0, crmConnector_1.COQLQuery)(app, `
     select 
       Start_DateTime,
@@ -38,6 +41,7 @@ router.get("/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () 
       Event_Title
     from Events where 'What_Id->Accounts.id' = ${row["Account_Name.id"]} or 'What_Id->Deals.Account_Name.id' = ${row["Account_Name.id"]}`);
     const availableTimeslots = [];
+    console.log({ duration });
     for (let i = 0; i < 7; i++) {
         const date = new Date(startDateTime);
         date.setDate(date.getDate() + i);
@@ -52,7 +56,10 @@ router.get("/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () 
                 date.setHours(time, 0, 0, 1);
                 const startDate = new Date(event.Start_DateTime);
                 const endDate = new Date(event.End_DateTime);
-                return startDate <= date && date <= endDate;
+                const targetStartDate = new Date(date);
+                const targetEndDate = new Date(date.getTime() + duration * 60000); // duration in minutes
+                return ((startDate <= targetStartDate && targetEndDate <= endDate) ||
+                    (startDate <= targetEndDate && targetStartDate <= endDate));
             });
             entity.timeslots.push({
                 available: !hasFranciseEvent,

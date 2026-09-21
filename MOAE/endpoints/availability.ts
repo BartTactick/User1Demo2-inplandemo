@@ -10,6 +10,7 @@ import {
 import { helpers } from "../utils/helpers";
 import { CatalystApp } from "zcatalyst-sdk-node/lib/catalyst-app";
 import { format, toZonedTime } from "date-fns-tz";
+import durationCalculation from "../utils/durationCalculation";
 
 const router = express.Router();
 
@@ -21,7 +22,8 @@ router.get("/:id", async (req, res) => {
     `
     select 
       Contact_Name.id,
-      Account_Name.id
+      Account_Name.id,
+      Aantal_ramen
     from Deals where id = ${req.params.id}`,
   );
 
@@ -32,6 +34,7 @@ router.get("/:id", async (req, res) => {
   startDateTime.setHours(12, 0, 0, 1);
   startDateTime.setDate(startDateTime.getDate() + 1);
 
+  const duration = await durationCalculation(app, Number(row["Aantal_ramen"]));
   const franciseEvents = await COQLQuery(
     app,
     `
@@ -48,7 +51,7 @@ router.get("/:id", async (req, res) => {
       time: string;
     }[];
   }[] = [];
-
+  console.log({ duration });
   for (let i = 0; i < 7; i++) {
     const date = new Date(startDateTime);
     date.setDate(date.getDate() + i);
@@ -65,7 +68,14 @@ router.get("/:id", async (req, res) => {
         date.setHours(time, 0, 0, 1);
         const startDate = new Date(event.Start_DateTime);
         const endDate = new Date(event.End_DateTime);
-        return startDate <= date && date <= endDate;
+
+        const targetStartDate = new Date(date);
+        const targetEndDate = new Date(date.getTime() + duration * 60000); // duration in minutes
+
+        return (
+          (startDate <= targetStartDate && targetEndDate <= endDate) ||
+          (startDate <= targetEndDate && targetStartDate <= endDate)
+        );
       });
       entity.timeslots.push({
         available: !hasFranciseEvent,

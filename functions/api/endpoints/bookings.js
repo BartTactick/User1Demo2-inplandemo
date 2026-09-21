@@ -17,24 +17,27 @@ const express_1 = __importDefault(require("express"));
 const zcatalyst_sdk_node_1 = __importDefault(require("zcatalyst-sdk-node"));
 const crmConnector_1 = require("../utils/crmConnector");
 const helpers_1 = require("../utils/helpers");
+const durationCalculation_1 = __importDefault(require("../utils/durationCalculation"));
 const router = express_1.default.Router();
 router.get("/:id/create", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const app = zcatalyst_sdk_node_1.default.initialize(req);
     const getPAT = yield (0, crmConnector_1.COQLQuery)(app, `
     select 
       Contact_Name.id,
-      Account_Name.id
+      Account_Name.id,
+      Aantal_ramen
     from Deals where id = ${req.params.id}`);
     const [row] = getPAT;
     if (!row)
         return res.status(404).json({ error: "Details not found" });
     const { date, time, type } = req.query;
     console.log(req.query);
+    const duration = yield (0, durationCalculation_1.default)(app, Number(row["Aantal_ramen"]));
     const [hours, minutes] = time.split(":").map(Number);
     const startDateTime = new Date(date);
     startDateTime.setHours(hours, minutes);
     const endDateTime = new Date(startDateTime);
-    endDateTime.setHours(endDateTime.getHours() + 1); // Assuming the event lasts 1 hour
+    endDateTime.setMinutes(endDateTime.getMinutes() + duration); // Assuming the event lasts for the calculated duration
     const create = yield (0, crmConnector_1.createItems)(app, "Events", [
         {
             Who_Id: row["Contact_Name.id"],
@@ -64,11 +67,13 @@ router.get("/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () 
       Contact_Name.Mailing_City,Contact_Name.Mailing_Zip,
       Contact_Name.Mailing_Street,
       Account_Name.Account_Name,
+      Aantal_ramen,
       Soort_aanvrag
     from Deals where id = ${req.params.id}`);
     const [row] = getPAT;
     if (!row)
         return res.status(404).json({ error: "Details not found" });
+    const duration = yield (0, durationCalculation_1.default)(app, Number(row["Aantal_ramen"]));
     // const getAvailability = await COQLQueryAll(
     //   app,
     //   "select Event_Title from Events where id > 0",
@@ -88,6 +93,7 @@ router.get("/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         },
         franchise: row["Account_Name.Account_Name"],
         type: row.Soort_aanvrag,
+        duration,
     });
 }));
 exports.bookingRouter = router;

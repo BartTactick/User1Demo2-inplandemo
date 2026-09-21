@@ -25,7 +25,8 @@ const contact = ref({
   email: '',
   phone: '',
 })
-const franchise = ref('')
+const franchise = ref(''),
+  duration = ref(0)
 
 const inmeetOptions = [
   {
@@ -103,6 +104,7 @@ onMounted(() => {
       address.value = data.address
       contact.value = data.contact
       franchise.value = data.franchise
+      duration.value = data.duration
 
       if (data.type) {
         const findID = inmeetOptions.find((option) => option.title === data.type)
@@ -199,7 +201,10 @@ async function createEvent(activateCallback: (step: string | number) => void) {
       </StepPanel>
       <StepPanel v-slot="{ activateCallback }" :value="2" class="flex flex-col grow bg-gray-100!">
         <div class="flex flex-col items-center m-auto gap-10">
-          <h1 class="mx-auto text-2xl">Welk moment komt u het beste uit?</h1>
+          <div class="mx-auto flex flex-col items-center">
+            <h1 class="text-2xl">Welk moment komt u het beste uit?</h1>
+            <h2 class="italic">Geschatte duur: {{ duration }} minuten</h2>
+          </div>
           <div class="flex items-center gap-5 flex-col">
             <div class="mx-auto flex border border-gray-300 bg-white rounded-lg">
               <div v-for="(date, i) of possibleDates">
