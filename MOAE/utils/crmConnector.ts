@@ -5,7 +5,7 @@ import { CatalystApp } from "zcatalyst-sdk-node/lib/catalyst-app";
 
 export async function getCRMToken(app: CatalystApp) {
   const connector = await app.connections().getConnectionCredentials("crm");
-  console.log(connector);
+
   return connector.headers["Authorization"];
 }
 

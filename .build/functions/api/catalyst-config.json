@@ -1,0 +1,13 @@
+{
+  "deployment": {
+    "name": "api",
+    "stack": "node24",
+    "type": "advancedio",
+    "env_variables": {
+      "CRM_API": "https://www.zohoapis.eu"
+    }
+  },
+  "execution": {
+    "main": "index.js"
+  }
+}
