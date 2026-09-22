@@ -15,6 +15,7 @@ declare module 'vue' {
     Curtains: typeof import('./src/components/icons/curtains.vue')['default']
     Floor: typeof import('./src/components/icons/floor.vue')['default']
     Gamma: typeof import('./src/components/icons/gamma.vue')['default']
+    Karwei: typeof import('./src/components/icons/karwei.vue')['default']
     ProgressSpinner: typeof import('primevue/progressspinner')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

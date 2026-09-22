@@ -1,21 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-primary: #003878;
-  --color-brand-secondary: #008cd2;
+  --color-brand-primary: #fa3;
+  --color-brand-secondary: #ee3d78;
 
-  --color-neutral-25: #f6f8f9;
-  --color-neutral-50: #edf0f2;
-  --color-neutral-100: #dbe1e5;
-  --color-neutral-400: #6a8295;
-  --color-neutral-500: #516371;
+  --color-neutral-25: #1b1b1b;
+  --color-neutral-50: #141414;
+  --color-neutral-100: #292929;
+  --color-neutral-400: #9b9b9b;
+  --color-neutral-500: #b8b8b8;
 
-  --color-foreground-primary: #111518;
-  --color-foreground-secondary: #516371;
-  --color-foreground-disabled: #516371;
-  --color-foreground-link: #003878;
-  --color-foreground-link-strong: #0066db;
-  --color-foreground-brand: #003878;
+  --color-foreground-primary: #ffffff;
+  --color-foreground-secondary: #b8b8b8;
+  --color-foreground-disabled: #777777;
+  --color-foreground-link: #fa3;
+  --color-foreground-link-strong: #fa3;
+  --color-foreground-brand: #fa3;
   --color-foreground-action-inverse: #ffffff;
   --color-foreground-on-brand: #ffffff;
   --color-foreground-on-accent: #ffffff;
@@ -23,30 +23,30 @@
   --color-foreground-success: #00852c;
   --color-foreground-promo: #ff5500;
 
-  --color-background-primary: #ffffff;
-  --color-background-secondary: #edf0f2;
-  --color-background-tertiary: #dbe1e5;
-  --color-background-disabled: #dbe1e5;
-  --color-background-brand: #003878;
-  --color-background-accent: #0058bd;
-  --color-background-accent-subtle: #f6f8f9;
+  --color-background-primary: #0a0a0a;
+  --color-background-secondary: #000000;
+  --color-background-tertiary: #1b1b1b;
+  --color-background-disabled: #292929;
+  --color-background-brand: #c20344;
+  --color-background-accent: #ee3d78;
+  --color-background-accent-subtle: #251018;
   --color-background-info-subtle: #ebf4ff;
   --color-background-success-subtle: #e9fbe9;
   --color-background-warning-subtle: #fff2de;
   --color-background-danger-subtle: #fdf0ed;
   --color-background-conversion: #00852c;
-  --color-background-inverse: #404e59;
-  --color-background-strong: #111518;
+  --color-background-inverse: #ffffff;
+  --color-background-strong: #000000;
   --color-background-rating: #fdc166;
   --color-background-promo: #ff5500;
 
-  --color-border-strong: #111518;
-  --color-border-medium: #778d9c;
-  --color-border-subtle: #dbe1e5;
-  --color-border-disabled: #b5c1ca;
-  --color-border-brand: #003878;
-  --color-border-focus: #0066db;
-  --color-border-select: #0058bd;
+  --color-border-strong: #ffffff;
+  --color-border-medium: #777777;
+  --color-border-subtle: #383838;
+  --color-border-disabled: #4a4a4a;
+  --color-border-brand: #c20344;
+  --color-border-focus: #ee3d78;
+  --color-border-select: #c20344;
 }
 
 :root,
@@ -56,25 +56,25 @@
   --font-primary: "Overpass", var(--font-sans);
   --font-tertiary: "Interstate Condensed", var(--font-sans);
 
-  --color-brand-primary: #003878;
-  --color-brand-secondary: #008cd2;
-  --color-neutral-25: #f6f8f9;
-  --color-neutral-50: #edf0f2;
-  --color-neutral-100: #dbe1e5;
-  --color-neutral-400: #6a8295;
-  --color-neutral-500: #516371;
-  --color-gray-200: oklch(92.8% 0.006 264.531);
-  --color-gray-500: oklch(55.1% 0.027 264.364);
-  --color-gray-900: oklch(21% 0.034 264.665);
+  --color-brand-primary: #fa3;
+  --color-brand-secondary: #ee3d78;
+  --color-neutral-25: #1b1b1b;
+  --color-neutral-50: #141414;
+  --color-neutral-100: #292929;
+  --color-neutral-400: #9b9b9b;
+  --color-neutral-500: #b8b8b8;
+  --color-gray-200: #383838;
+  --color-gray-500: #9b9b9b;
+  --color-gray-900: #ffffff;
   --color-black: #000;
   --color-white: #fff;
 
-  --color-foreground-primary: #111518;
-  --color-foreground-secondary: #516371;
-  --color-foreground-disabled: #516371;
-  --color-foreground-link: #003878;
-  --color-foreground-link-strong: #0066db;
-  --color-foreground-brand: #003878;
+  --color-foreground-primary: #ffffff;
+  --color-foreground-secondary: #b8b8b8;
+  --color-foreground-disabled: #777777;
+  --color-foreground-link: #fa3;
+  --color-foreground-link-strong: #fa3;
+  --color-foreground-brand: #fa3;
   --color-foreground-action-inverse: #fff;
   --color-foreground-on-brand: #fff;
   --color-foreground-on-accent: #fff;
@@ -82,30 +82,30 @@
   --color-foreground-success: green;
   --color-foreground-promo: #f50;
 
-  --color-background-primary: #fff;
-  --color-background-secondary: #edf0f2;
-  --color-background-tertiary: #dbe1e5;
-  --color-background-disabled: #dbe1e5;
-  --color-background-brand: #003878;
-  --color-background-accent: #0058bd;
-  --color-background-accent-subtle: #f6f8f9;
+  --color-background-primary: #0a0a0a;
+  --color-background-secondary: #000000;
+  --color-background-tertiary: #1b1b1b;
+  --color-background-disabled: #292929;
+  --color-background-brand: #c20344;
+  --color-background-accent: #ee3d78;
+  --color-background-accent-subtle: #251018;
   --color-background-info-subtle: #ebf4ff;
   --color-background-success-subtle: #e9fbe9;
   --color-background-warning-subtle: #fff2de;
   --color-background-danger-subtle: #fdf0ed;
   --color-background-conversion: #00852c;
-  --color-background-inverse: #404e59;
-  --color-background-strong: #111518;
+  --color-background-inverse: #ffffff;
+  --color-background-strong: #000000;
   --color-background-rating: #fdc166;
   --color-background-promo: #f50;
 
-  --color-border-strong: #111518;
-  --color-border-medium: #778d9c;
-  --color-border-subtle: #dbe1e5;
-  --color-border-disabled: #b5c1ca;
-  --color-border-brand: #003878;
-  --color-border-focus: #0066db;
-  --color-border-select: #0058bd;
+  --color-border-strong: #ffffff;
+  --color-border-medium: #777777;
+  --color-border-subtle: #383838;
+  --color-border-disabled: #4a4a4a;
+  --color-border-brand: #c20344;
+  --color-border-focus: #ee3d78;
+  --color-border-select: #c20344;
 
   --spacing: 0.25rem;
   --spacing-18: 72px;
@@ -121,10 +121,10 @@
 }
 
 :root {
-  --p-primary-color: var(--color-brand-primary);
+  --p-primary-color: #fa3;
   --p-primary-contrast-color: var(--color-white);
-  --p-primary-hover-color: #002b5c;
-  --p-primary-active-color: #001d3d;
+  --p-primary-hover-color: #fa3;
+  --p-primary-active-color: #fa3;
   --p-surface-0: var(--color-white);
   --p-surface-50: var(--color-neutral-25);
   --p-surface-100: var(--color-neutral-50);

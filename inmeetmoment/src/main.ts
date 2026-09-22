@@ -12,18 +12,18 @@ import 'primeicons/primeicons.css'
 const InMeetPreset = definePreset(Aura, {
   semantic: {
     primary: {
-      50: '#edf6ff',
-      100: '#d9ecff',
-      200: '#b8dcff',
-      300: '#86c5ff',
-      400: '#4da5f5',
-      500: '#008cd2',
-      600: '#0058bd',
-      700: '#003878',
-      800: '#002b5c',
-      900: '#001d3d',
-      950: '#001329'
-    }
+      50: '#fff0f4',
+      100: '#ffd9e3',
+      200: '#ffb3c8',
+      300: '#ff7d9f',
+      400: '#f84f7d',
+      500: '#fa3',
+      600: '#d91f5d',
+      700: '#fa3',
+      800: '#a00338',
+      900: '#8f0232',
+      950: '#5f0121',
+    },
   },
   components: {
     button: {
@@ -31,21 +31,21 @@ const InMeetPreset = definePreset(Aura, {
         light: {
           root: {
             primary: {
-              background: '{primary.700}',
-              hoverBackground: '{primary.800}',
-              activeBackground: '{primary.900}',
-              borderColor: '{primary.700}',
-              hoverBorderColor: '{primary.800}',
-              activeBorderColor: '{primary.900}',
+              background: '#fa3',
+              hoverBackground: '#fa3',
+              activeBackground: '#fa3',
+              borderColor: '#fa3',
+              hoverBorderColor: '#fa3',
+              activeBorderColor: '#fa3',
               color: '#ffffff',
               hoverColor: '#ffffff',
-              activeColor: '#ffffff'
-            }
-          }
-        }
-      }
-    }
-  }
+              activeColor: '#ffffff',
+            },
+          },
+        },
+      },
+    },
+  },
 })
 
 const app = createApp(App)
@@ -58,8 +58,8 @@ app.use(PrimeVue, {
     preset: InMeetPreset,
 
     options: {
-      darkModeSelector: false
-    }
-  }
+      darkModeSelector: false,
+    },
+  },
 })
 app.mount('#app')

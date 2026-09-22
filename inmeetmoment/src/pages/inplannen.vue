@@ -182,8 +182,8 @@ async function createEvent(activateCallback: (step: string | number) => void) {
                 <button
                   class="p-5 cursor-pointer flex flex-col items-center transition-all rounded-lg w-full duration-500"
                   :class="{
-                    'bg-brand-primary text-white': currentOptionId === option.id,
-                    'hover:bg-brand-secondary/20': currentOptionId !== option.id,
+                    'bg-[#fa3] text-white': currentOptionId === option.id,
+                    'hover:bg-[#fa3]/20': currentOptionId !== option.id,
                   }"
                 >
                   <component :is="option.icon" class="text-8xl"></component>
@@ -209,7 +209,7 @@ async function createEvent(activateCallback: (step: string | number) => void) {
             <div class="mx-auto flex border border-gray-300 bg-white rounded-lg">
               <div v-for="(date, i) of possibleDates">
                 <div
-                  class="p-2 flex flex-col items-center w-full border-b border-gray-300 bg-brand-primary text-white"
+                  class="p-2 flex flex-col items-center w-full border-b border-gray-300 bg-[#fa3] text-white"
                   :class="{
                     'rounded-tl-lg': i == 0,
                     'rounded-tr-lg': i == possibleDates.length - 1,
@@ -269,10 +269,10 @@ async function createEvent(activateCallback: (step: string | number) => void) {
           </div>
 
           <div
-            class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg flex flex-col"
+            class="overflow-hidden rounded-lg border border-gray-50 bg-white shadow-lg flex flex-col"
           >
             <div
-              class="flex items-center gap-4 border-b border-gray-200 bg-brand-primary px-6 py-5 text-white"
+              class="flex items-center gap-4 border-b border-gray-50 bg-[#fa3] px-6 py-5 text-white"
             >
               <span class="pi pi-calendar text-2xl" aria-hidden="true"></span>
               <div>
@@ -282,14 +282,14 @@ async function createEvent(activateCallback: (step: string | number) => void) {
               </div>
 
               <div class="ml-auto font-bold text-lg">
-                <p class="text-sm text-white/75">Uw Gamma winkel</p>
+                <p class="text-sm text-white/75">Uw Karwei winkel</p>
                 {{ franchise }}
               </div>
             </div>
 
             <div class="grid gap-8 p-6 sm:grid-cols-2 sm:p-8">
               <section aria-labelledby="address-heading">
-                <div class="mb-4 flex items-center gap-3 text-brand-primary">
+                <div class="mb-4 flex items-center gap-3 text-foreground-brand">
                   <span class="pi pi-map-marker text-xl" aria-hidden="true"></span>
                   <h2 id="address-heading" class="font-bold">Adres</h2>
                 </div>
@@ -310,7 +310,7 @@ async function createEvent(activateCallback: (step: string | number) => void) {
               </section>
 
               <section aria-labelledby="contact-heading">
-                <div class="mb-4 flex items-center gap-3 text-brand-primary">
+                <div class="mb-4 flex items-center gap-3 text-foreground-brand">
                   <span class="pi pi-user text-xl" aria-hidden="true"></span>
                   <h2 id="contact-heading" class="font-bold">Contactgegevens</h2>
                 </div>
@@ -364,25 +364,31 @@ async function createEvent(activateCallback: (step: string | number) => void) {
           </div>
 
           <div class="grid w-full gap-4 text-left sm:grid-cols-3">
-            <div class="rounded-lg border border-gray-200 bg-white p-5 shadow-sm">
-              <span
-                class="pi pi-calendar mb-3 text-xl text-brand-primary"
-                aria-hidden="true"
-              ></span>
-              <p class="text-sm text-foreground-secondary">Datum</p>
+            <div class="rounded-lg border border-gray-100 bg-white p-5 shadow-sm">
+              <div class="flex gap-2 items-center">
+                <span
+                  class="pi pi-calendar text-xl text-foreground-brand"
+                  aria-hidden="true"
+                ></span>
+                <p class="text-sm text-brand-primary">Datum</p>
+              </div>
               <p class="mt-1 font-semibold">{{ formatDate(currentDay!) }}</p>
             </div>
-            <div class="rounded-lg border border-gray-200 bg-white p-5 shadow-sm">
-              <span class="pi pi-clock mb-3 text-xl text-brand-primary" aria-hidden="true"></span>
-              <p class="text-sm text-foreground-secondary">Tijd</p>
+            <div class="rounded-lg border border-gray-100 bg-white p-5 shadow-sm">
+              <div class="flex gap-2 items-center">
+                <span class="pi pi-clock text-xl text-foreground-brand" aria-hidden="true"></span>
+                <p class="text-sm text-brand-primary">Tijd</p>
+              </div>
               <p class="mt-1 font-semibold">{{ currentTimeslot }}</p>
             </div>
-            <div class="rounded-lg border border-gray-200 bg-white p-5 shadow-sm">
-              <span
-                class="pi pi-envelope mb-3 text-xl text-brand-primary"
-                aria-hidden="true"
-              ></span>
-              <p class="text-sm text-foreground-secondary">Bevestiging</p>
+            <div class="rounded-lg border border-gray-100 bg-white p-5 shadow-sm">
+              <div class="flex gap-2 items-center">
+                <span
+                  class="pi pi-envelope text-xl text-foreground-brand"
+                  aria-hidden="true"
+                ></span>
+                <p class="text-sm text-brand-primary">Bevestiging</p>
+              </div>
               <p class="mt-1 break-words font-semibold">{{ contact.email }}</p>
             </div>
           </div>
